@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="fred-hdfs-java:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/fred_hdfs_java_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="fred-hdfs-java/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
