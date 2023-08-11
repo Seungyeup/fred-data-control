@@ -12,7 +12,6 @@ public class CustomFloatDeserializer extends JsonDeserializer<Float> {
 
     @Override
     public Float deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        // TODO : Auto-Generated Method stub
         String floatString = jp.getText();
         if(floatString.equals(".")){
             return null;
