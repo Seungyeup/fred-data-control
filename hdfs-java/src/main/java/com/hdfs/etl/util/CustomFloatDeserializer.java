@@ -1,9 +1,11 @@
 package com.hdfs.etl.util;
 
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+//import org.codehaus.jackson.JsonParser;
+//import org.codehaus.jackson.JsonProcessingException;
+//import org.codehaus.jackson.map.DeserializationContext;
+
 
 import java.io.IOException;
 
@@ -11,12 +13,11 @@ import java.io.IOException;
 public class CustomFloatDeserializer extends JsonDeserializer<Float> {
 
     @Override
-    public Float deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        String floatString = jp.getText();
+    public Float deserialize(com.fasterxml.jackson.core.JsonParser p, com.fasterxml.jackson.databind.DeserializationContext ctxt) throws IOException, JacksonException {
+        String floatString = p.getText();
         if(floatString.equals(".")){
             return null;
         }
         return Float.valueOf(floatString);
     }
-
 }
