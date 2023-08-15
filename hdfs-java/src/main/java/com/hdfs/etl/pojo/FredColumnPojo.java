@@ -1,11 +1,14 @@
 package com.hdfs.etl.pojo;
 
+import com.hdfs.etl.util.DefaultLocalDateTimeDeserializer;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.hdfs.etl.util.DefaultLocalDateTimeDeserializer;
 import lombok.Data;
 
 import java.time.LocalDate;
