@@ -44,11 +44,13 @@ public class EtlFileUploader2Hdfs {
         Fred2Hdfs fred = new Fred2Hdfs();
 
         System.out.println("======================== Unemployee Annual");
-
+        System.out.println("ok0");
         fred.clearInputFiles("src/main/outputs/", "unemployee_annual.csv");
-
+        System.out.println("ok1");
         for (US_STATES state : US_STATES.values()) {
+            System.out.println("ok2");
             List<EtlColumnPojo> etlUnemployeeDataAnnual = fred.getEtlListData(FREQUENCY.YEAR, state, titleUnemployee);
+            System.out.println("ok3");
             fred.writeCsv2Hdfs("unemployee_annual.csv", etlUnemployeeDataAnnual);
 
             if (state.ordinal() == 0) {

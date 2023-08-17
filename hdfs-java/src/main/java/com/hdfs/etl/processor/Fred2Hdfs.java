@@ -17,8 +17,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.checkerframework.checker.units.qual.C;
-
 
 import java.io.*;
 import java.net.URI;
@@ -74,6 +72,8 @@ public class Fred2Hdfs {
 
         String namenode = fredProp.getProperty("hdfs.namenode.url");
         hadoopFs = FileSystem.get(new URI(namenode), configuration);
+        System.out.println(namenode);
+        System.out.println(hadoopFs);
     }
 
     /*
@@ -195,12 +195,20 @@ public class Fred2Hdfs {
     public void clearInputFiles(String path, String filename) throws Exception {
         Path hadoopPath = new Path(filename);
 
+        System.out.println(hadoopPath.getName());
+
+        System.out.println(hadoopFs.exists(hadoopPath));
+
         if(hadoopFs.exists(hadoopPath)){
+            System.out.println("하둡 삭제");
             hadoopFs.delete(hadoopPath, true);
             System.out.println("Hadoop File System 에서 `" + hadoopPath.getName() + "` 파일이 삭제되었습니다.");
+        }else {
+            System.out.println("1번 종료");
         }
 
         File localPath = new File(path + filename);
+        System.out.println(localPath);
         if( localPath.exists() ){
             localPath.delete();
             System.out.println("Local 에서 `" + localPath.getName() + "` 파일이 삭제되었습니다.");
