@@ -2,11 +2,14 @@ package com.hdfs.etl.processor;
 
 
 import com.hdfs.etl.util.PropertyFileReader;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+@Slf4j
 public class Hdfs2Kafka {
 
     private Properties systemProp = null;
@@ -22,7 +26,9 @@ public class Hdfs2Kafka {
 
     public Hdfs2Kafka() throws Exception {
         systemProp = PropertyFileReader.readPropertyFile("SystemConfig.properties");
+        log.info(systemProp.toString());
         String HADOOP_CONF_DIR = systemProp.getProperty("hadoop.conf.dir");
+        log.info(HADOOP_CONF_DIR);
 
         Configuration configuration = new Configuration();
         configuration.addResource(new Path("file:///" + HADOOP_CONF_DIR  + "/core-site.xml"));
@@ -30,11 +36,14 @@ public class Hdfs2Kafka {
 
         String namenode = systemProp.getProperty("hdfs.namenode.url");
         hadoopFs = FileSystem.get(new URI(namenode), configuration);
+        log.info(hadoopFs.toString());
     }
 
     public List<String> readHdfsFile(String filename) throws Exception {
         Path path = new Path(filename);
         List<String> lines = new ArrayList<>();
+
+        log.info(path.toString());
 
         if( !hadoopFs.exists(path) ){
             System.out.println("파일이 존재하지 않습니다.");
@@ -42,6 +51,9 @@ public class Hdfs2Kafka {
         }
 
         FSDataInputStream inputStream = hadoopFs.open(path);
+
+        log.info(inputStream.toString());
+
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         // TODO : 값이 어떤 항목인지 읽기 불편함

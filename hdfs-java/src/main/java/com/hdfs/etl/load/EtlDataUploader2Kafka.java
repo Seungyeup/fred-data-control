@@ -1,16 +1,22 @@
 package com.hdfs.etl.load;
 
 import com.hdfs.etl.processor.Hdfs2Kafka;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class EtlDataUploader2Kafka {
 
     public static void main(String[] args) throws Exception{
         // TODO Auto-generated method stub
+        log.info("service start");
         Hdfs2Kafka hdfs2kafka = new Hdfs2Kafka();
+        log.info(hdfs2kafka.toString());
 
-        hdfs2kafka.readHdfsFile("unemployee_annual.csv").forEach(str ->
-                hdfs2kafka.sendLines2Kafka("topic_unempl_ann", str));
-        hdfs2kafka.getHdfsFilesInfo("unemployee_annual.csv");
+        hdfs2kafka.readHdfsFile("unemployee_annual.csv");
+//               .forEach(str -> hdfs2kafka.sendLines2Kafka("topic_unempl_ann", str));
+//        hdfs2kafka.getHdfsFilesInfo("unemployee_annual.csv");
 
 //        hdfs2kafka.readHdfsFile("household_income.csv").forEach(str ->
 //                hdfs2kafka.sendLines2Kafka("topic_house_income_ann", str));
