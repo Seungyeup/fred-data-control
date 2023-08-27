@@ -60,117 +60,117 @@ public class EtlFileUploader2Hdfs {
             }
         }
 
-//        System.out.println("======================== Real Median Household Income");
-//
-//        fred.clearInputFiles("src/main/outputs/", "household_income.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlhouseholdIncomData = fred.getEtlListData(FREQUENCY.YEAR, state, titleHouseholdIncome);
-//            fred.writeCsv2Hdfs("household_income.csv", etlhouseholdIncomData);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "household_income.csv", etlhouseholdIncomData);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "household_income.csv",	etlhouseholdIncomData);
-//            }
-//        }
-//
-//        System.out.println("======================== Total Tax Exemptions");
-//
-//        fred.clearInputFiles("src/main/outputs/", "tax_exemption.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlTaxExempData = fred.getEtlListData(FREQUENCY.YEAR, state, titleTaxExemption);
-//            fred.writeCsv2Hdfs("tax_exemption.csv", etlTaxExempData);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "tax_exemption.csv", etlTaxExempData);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "tax_exemption.csv", etlTaxExempData);
-//            }
-//        }
-//
-//        System.out.println("======================== Civilian Labor Force");
-//
-//        fred.clearInputFiles("src/main/outputs/", "civilian_force.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlCivilForceData = fred.getEtlListData(FREQUENCY.YEAR, state, titleLaborForce);
-//            fred.writeCsv2Hdfs("civilian_force.csv", etlCivilForceData);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "civilian_force.csv", etlCivilForceData);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "civilian_force.csv", etlCivilForceData);
-//            }
-//        }
-//
-//        System.out.println("======================== Poverty");
-//
-//        fred.clearInputFiles("src/main/outputs/", "poverty.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlPovertyData = fred.getEtlListData(FREQUENCY.YEAR, state, titlePoverty);
-//            fred.writeCsv2Hdfs("poverty.csv", etlPovertyData);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "poverty.csv", etlPovertyData);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "poverty.csv", etlPovertyData);
-//            }
-//        }
-//
-//        System.out.println("======================== Real GDP");
-//
-//        fred.clearInputFiles("src/main/outputs/", "real_gdp.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlRealGDPData = fred.getEtlListData(FREQUENCY.YEAR, state, titleRealGDP);
-//            fred.writeCsv2Hdfs("real_gdp.csv", etlRealGDPData);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "real_gdp.csv", etlRealGDPData);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "real_gdp.csv", etlRealGDPData);
-//            }
-//        }
-//
-//        System.out.println("======================== Unemployee Monthly");
-//
-//        fred.clearInputFiles("src/main/outputs/", "unemployee_monthly.csv");
-//
-//        for (US_STATES state : US_STATES.values()) {
-//            List<EtlColumnPojo> etlUnemployeeDataMonthly = fred.getEtlListData(FREQUENCY.MONTH, state, titleUnemployee);
-//            fred.writeCsv2Hdfs("unemployee_monthly.csv", etlUnemployeeDataMonthly);
-//
-//            if (state.ordinal() == 0) {
-//                fred.writeCsv2Local(true, "src/main/outputs/", "unemployee_monthly.csv", etlUnemployeeDataMonthly);
-//            } else {
-//                fred.writeCsv2Local(false, "src/main/outputs/", "unemployee_monthly.csv", etlUnemployeeDataMonthly);
-//            }
-//        }
-//
-//        System.out.println("======================== Earnings");
-//
-//        for (int i = 0 ; i < titleEarningsList.size() ; i++) {
-//            fred.clearInputFiles("src/main/outputs/", getFilename(titleEarningsList.get(i)));
-//        }
-//
-//        for (int i = 0 ; i < titleEarningsList.size() ; i++) {
-//            for (US_STATES state : US_STATES.values()) {
-//                List<EtlColumnPojo> etlEarningsData = fred.getEtlListData(FREQUENCY.MONTH, state, titleEarningsList.get(i));
-//                String filename = getFilename(titleEarningsList.get(i));
-//
-//                fred.writeCsv2Hdfs(filename, etlEarningsData);
-//
-//                if (state.ordinal() == 0) {
-//                    fred.writeCsv2Local(true, "src/main/outputs/", filename, etlEarningsData);
-//                } else {
-//                    fred.writeCsv2Local(false, "src/main/outputs/", filename, etlEarningsData);
-//                }
-//            }
-//        }
-//
+        System.out.println("======================== Real Median Household Income");
+
+        fred.clearInputFiles("src/main/outputs/", "household_income.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlhouseholdIncomData = fred.getEtlListData(FREQUENCY.YEAR, state, titleHouseholdIncome);
+            fred.writeCsv2Hdfs("household_income.csv", etlhouseholdIncomData);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "household_income.csv", etlhouseholdIncomData);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "household_income.csv",	etlhouseholdIncomData);
+            }
+        }
+
+        System.out.println("======================== Total Tax Exemptions");
+
+        fred.clearInputFiles("src/main/outputs/", "tax_exemption.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlTaxExempData = fred.getEtlListData(FREQUENCY.YEAR, state, titleTaxExemption);
+            fred.writeCsv2Hdfs("tax_exemption.csv", etlTaxExempData);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "tax_exemption.csv", etlTaxExempData);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "tax_exemption.csv", etlTaxExempData);
+            }
+        }
+
+        System.out.println("======================== Civilian Labor Force");
+
+        fred.clearInputFiles("src/main/outputs/", "civilian_force.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlCivilForceData = fred.getEtlListData(FREQUENCY.YEAR, state, titleLaborForce);
+            fred.writeCsv2Hdfs("civilian_force.csv", etlCivilForceData);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "civilian_force.csv", etlCivilForceData);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "civilian_force.csv", etlCivilForceData);
+            }
+        }
+
+        System.out.println("======================== Poverty");
+
+        fred.clearInputFiles("src/main/outputs/", "poverty.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlPovertyData = fred.getEtlListData(FREQUENCY.YEAR, state, titlePoverty);
+            fred.writeCsv2Hdfs("poverty.csv", etlPovertyData);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "poverty.csv", etlPovertyData);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "poverty.csv", etlPovertyData);
+            }
+        }
+
+        System.out.println("======================== Real GDP");
+
+        fred.clearInputFiles("src/main/outputs/", "real_gdp.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlRealGDPData = fred.getEtlListData(FREQUENCY.YEAR, state, titleRealGDP);
+            fred.writeCsv2Hdfs("real_gdp.csv", etlRealGDPData);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "real_gdp.csv", etlRealGDPData);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "real_gdp.csv", etlRealGDPData);
+            }
+        }
+
+        System.out.println("======================== Unemployee Monthly");
+
+        fred.clearInputFiles("src/main/outputs/", "unemployee_monthly.csv");
+
+        for (US_STATES state : US_STATES.values()) {
+            List<EtlColumnPojo> etlUnemployeeDataMonthly = fred.getEtlListData(FREQUENCY.MONTH, state, titleUnemployee);
+            fred.writeCsv2Hdfs("unemployee_monthly.csv", etlUnemployeeDataMonthly);
+
+            if (state.ordinal() == 0) {
+                fred.writeCsv2Local(true, "src/main/outputs/", "unemployee_monthly.csv", etlUnemployeeDataMonthly);
+            } else {
+                fred.writeCsv2Local(false, "src/main/outputs/", "unemployee_monthly.csv", etlUnemployeeDataMonthly);
+            }
+        }
+
+        System.out.println("======================== Earnings");
+
+        for (int i = 0 ; i < titleEarningsList.size() ; i++) {
+            fred.clearInputFiles("src/main/outputs/", getFilename(titleEarningsList.get(i)));
+        }
+
+        for (int i = 0 ; i < titleEarningsList.size() ; i++) {
+            for (US_STATES state : US_STATES.values()) {
+                List<EtlColumnPojo> etlEarningsData = fred.getEtlListData(FREQUENCY.MONTH, state, titleEarningsList.get(i));
+                String filename = getFilename(titleEarningsList.get(i));
+
+                fred.writeCsv2Hdfs(filename, etlEarningsData);
+
+                if (state.ordinal() == 0) {
+                    fred.writeCsv2Local(true, "src/main/outputs/", filename, etlEarningsData);
+                } else {
+                    fred.writeCsv2Local(false, "src/main/outputs/", filename, etlEarningsData);
+                }
+            }
+        }
+
 
         fred.closeStream();
 
