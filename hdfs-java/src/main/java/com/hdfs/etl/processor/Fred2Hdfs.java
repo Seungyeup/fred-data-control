@@ -81,21 +81,21 @@ public class Fred2Hdfs {
     */
     public List<EtlColumnPojo> getEtlListData(FREQUENCY frequency, US_STATES state, String searchText) throws Exception {
         String fredUrl = fredProp.getProperty("fred.url");
-        String apiKey = fredProp.getProperty("fred.apiKey");
+        String apiKey = fredProp.getProperty("fred.key");
         String fileType = "json";
         String searchUrl = fredUrl
                 + APITYPES.valueOf("SEARCH").apiType
                 + "?search_text=" + searchText.replace(' ', '+')
                 + state.getValueFullName().replaceAll(" ", "+")
                 + "&api_key=" + apiKey
-                + "&file_type" + fileType;
+                + "&file_type=" + fileType;
 
         System.out.println(searchUrl);
 
         JsonNode rootNode = mapper.readTree(new URL(searchUrl));
         // TODO : sleep 아닌 좀 더 효율적으로 기다리는 방법 없나? (sync 라던지...)
         Thread.sleep(500);
-        ArrayNode nodeSeries = (ArrayNode) rootNode.get("series");
+        ArrayNode nodeSeries = (ArrayNode) rootNode.get("seriess");
         List<FredColumnPojo> listFredData = mapper.readValue(nodeSeries.traverse(), new TypeReference<List<FredColumnPojo>>(){});
 
         Predicate<FredColumnPojo> predicate =
