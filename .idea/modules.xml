@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/fred-data-control.iml" filepath="$PROJECT_DIR$/.idea/fred-data-control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hdfs-java.main.iml" filepath="$PROJECT_DIR$/.idea/modules/hdfs-java.main.iml" />
     </modules>
   </component>
 </project>

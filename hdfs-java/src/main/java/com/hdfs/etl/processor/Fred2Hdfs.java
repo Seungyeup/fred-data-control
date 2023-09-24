@@ -176,6 +176,7 @@ public class Fred2Hdfs {
         csvMapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
         csvMapper.findAndRegisterModules();
         csvMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+DLTMDDUQ1260!
 
         CsvSchema schema = csvMapper.schemaFor(EtlColumnPojo.class).withColumnSeparator(',');
         if (first) {
