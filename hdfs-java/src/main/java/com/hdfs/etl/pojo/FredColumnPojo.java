@@ -16,9 +16,21 @@ import java.time.LocalDateTime;
 
 @Data
 @JsonPropertyOrder({
-        "id", "realtime_start", "realtime_end", "title", "observation_start",
-        "observation_end", "frequency", "frequency_short", "units", "units_short",
-        "seasonal_adjustment", "seasonal_adjustment_short", "last_updated", "popularity", "group_popularity",
+        "id", //: "AKUR",
+        "realtime_start", //: "2023-09-26",
+        "realtime_end", //: "2023-09-26",
+        "title", //: "Unemployment Rate in Alaska",
+        "observation_start", //: "1976-01-01",
+        "observation_end", //: "2023-08-01",
+        "frequency", //: "Monthly",
+        "frequency_short", //: "M",
+        "units", //: "Percent",
+        "units_short", //: "%",
+        "seasonal_adjustment", //: "Seasonally Adjusted",
+        "seasonal_adjustment_short", //: "SA",
+        "last_updated", //: "2023-09-21 10:08:05-05",
+        "popularity", //: 13,
+        "group_popularity", //: 16
         "notes"
 })
 public class FredColumnPojo {

@@ -101,13 +101,13 @@ public class Fred2Hdfs {
         Predicate<FredColumnPojo> predicate =
                 fred -> (fred.getTitle().equals(searchText + state.getValueFullName()))
                             && (fred.getFrequency_short().charAt(0) == frequency.freq)
-                            && fred.getSeasonal_adjustment_short().equals("MSA");
+                            && fred.getSeasonal_adjustment_short().equals("NSA");
 
         List<EtlColumnPojo> listData = listFredData.stream().filter(predicate).flatMap(pojo -> {
                 String observUrl = fredUrl
                         + APITYPES.valueOf("OBSERVATION").apiType
-                        + "?series_id" + pojo.getId()
-                        + "&api_key" + apiKey
+                        + "?series_id=" + pojo.getId()
+                        + "&api_key=" + apiKey
                         + "&file_type=" + fileType;
 
                 System.out.println(observUrl);
@@ -127,12 +127,10 @@ public class Fred2Hdfs {
                         valuePojo.setUnits_short(pojo.getUnits_short());
                         valuePojo.setSeasonal_adjustment_short(pojo.getSeasonal_adjustment_short());
                     }
-
                     return listEtlData.stream();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 return null;
         }).collect(Collectors.toList());
 
@@ -148,7 +146,7 @@ public class Fred2Hdfs {
         FSDataOutputStream hadoopOutputStream = null;
         BufferedWriter bufferedWriter = null;
 
-        if(nodeList.size() != 0){
+        if(!nodeList.isEmpty()){
             if(hadoopFs.exists(hadoopPath)){
                 hadoopOutputStream = hadoopFs.append(hadoopPath);
                 bufferedWriter = new BufferedWriter(new OutputStreamWriter(hadoopOutputStream,
@@ -176,7 +174,6 @@ public class Fred2Hdfs {
         csvMapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
         csvMapper.findAndRegisterModules();
         csvMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-DLTMDDUQ1260!
 
         CsvSchema schema = csvMapper.schemaFor(EtlColumnPojo.class).withColumnSeparator(',');
         if (first) {
