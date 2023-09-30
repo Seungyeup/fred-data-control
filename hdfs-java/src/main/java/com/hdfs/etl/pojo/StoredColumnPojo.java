@@ -27,7 +27,7 @@ public class StoredColumnPojo implements Serializable {
     // DataFrame 의 Schema 객체를 생성
     private static StructType structType = DataTypes.createStructType(new StructField[]{
             DataTypes.createStructField("date", DataTypes.DateType, false),
-            DataTypes.createStructField("value", DataTypes.FloatType, false),
+            DataTypes.createStructField("value", DataTypes.FloatType, true),
             DataTypes.createStructField("id", DataTypes.StringType, false),
             DataTypes.createStructField("title", DataTypes.StringType, false),
             DataTypes.createStructField("state", DataTypes.StringType, false),

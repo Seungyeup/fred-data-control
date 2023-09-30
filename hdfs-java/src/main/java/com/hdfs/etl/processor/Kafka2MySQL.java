@@ -8,7 +8,6 @@ import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 import scala.Predef;
 import scala.collection.JavaConverters;
-import scala.jdk.javaapi.CollectionConverters;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,11 +22,12 @@ public class Kafka2MySQL {
     public Kafka2MySQL() throws Exception {
         systemProp = PropertyFileReader.readPropertyFile("SystemConfig.properties");
         String appName = (String)systemProp.get("spark.batch.name");
+
         spark = SparkSession.builder().master("local[*]").appName(appName).getOrCreate();
     }
 
     private static <A, B> scala.collection.immutable.Map<A, B> toScalaMap(Map<A, B> m) {
-        return JavaConverters.mapAsScalaMapConverter(m).asScala().toMap(Predef.$conforms());
+        return JavaConverters.mapAsScalaMapConverter(m).asScala().toMap(Predef.$conforms());  // scala core 2.13 to 2.12 변경
     }
 
     public Dataset<Row> getDataframe(String kafkaTopic) {
@@ -47,8 +47,8 @@ public class Kafka2MySQL {
     public void saveDataframe2MySQL(Dataset<Row> df, String targetSrc){
         Map<String, String> options = new HashMap<String, String>();
 
-        Dataset<Row> dfs = df.select(from_csv(col("column"), StoredColumnPojo.getStructType(), toScalaMap(options)))
-                .as("entityStoredPojo")
+        Dataset<Row> dfs = df.select(from_csv(col("column"), StoredColumnPojo.getStructType(), toScalaMap(options))
+                .as("entityStoredPojo"))
                 .selectExpr("entityStoredPojo.date",
                         "entityStoredPojo.value",
                         "entityStoredPojo.id",
