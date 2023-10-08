@@ -117,3 +117,5 @@ fabric.properties
 *.csv
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
+
+hadoop-cluster-setup/resource/*
