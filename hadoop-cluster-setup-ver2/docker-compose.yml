@@ -1,0 +1,83 @@
+version: "1.1"
+
+services:
+  namenode:
+    build: ./container/namenode
+    container_name: namenode
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+      - ./data/:/hadoop-data/input
+      - ./map_reduce/:/hadoop-data/map_reduce
+    environment:
+      - CLUSTER_NAME=test
+    ports:
+      - "9870:9870"
+      - "8020:8020"
+    networks:
+      - hadoop_cluster_network
+
+  resourcemanager:
+    build: ./container/resourcemanager
+    container_name: resourcemanager
+    restart: on-failure
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+      - datanode3
+    ports:
+      - "8089:8088"
+    networks:
+      - hadoop_cluster_network
+
+  nodemanager1:
+    build: ./container/nodemanager
+    container_name: nodemanager1
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    ports:
+      - "8042:8042"
+    networks:
+      - hadoop_cluster_network
+
+  datanode1:
+    build: ./container/datanode
+    container_name: datanode1
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    networks:
+      - hadoop_cluster_network
+
+  datanode2:
+    build: ./container/datanode
+    container_name: datanode2
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    networks:
+      - hadoop_cluster_network
+
+  datanode3:
+    build: ./container/datanode
+    container_name: datanode3
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode3:/hadoop/dfs/data
+    networks:
+      - hadoop_cluster_network
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+  hadoop_datanode3:
+
+networks:
+  hadoop_cluster_network:
+    name: hadoop_cluster_network
