@@ -1,5 +1,5 @@
 ####################################################################
-# Namenode, Datanode 에 사용할 기본 이미지를 생성한다.
+# Base-Image Dockerfile
 #
 # 이미지명 : hadoop_cluster_base_image
 # 허브주소 : lsyeup1206/hadoop_cluster_base_image

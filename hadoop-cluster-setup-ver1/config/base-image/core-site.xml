@@ -26,8 +26,4 @@
       ADD SAME HOST AS THE MACHINE WHERE YOU ARE RUNNING YOUR NAMENODE
     </description>
   </property>
-  <property>
-    <name>hadoop.tmp.dir</name>
-    <value>/opt/hadoop-3.3.2/tmp</value>
-  </property>
 </configuration>
