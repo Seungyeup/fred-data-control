@@ -13,7 +13,6 @@ ENV JAVA_VERSION=jdk-11.0.2
 ENV HADOOP_VERSION=hadoop-3.3.2
 ENV JAVA_TAR_FILE=openjdk-11.0.2_linux-x64_bin.tar.gz
 ENV HADOOP_TAR_FILE=hadoop-3.3.2.tar.gz
-ENV HADOOP_CONF_DIR=/etc/hadoop
 
 ENV TZ=Asia/Seoul
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -40,6 +39,7 @@ ENV PATH=$PATH:$JAVA_HOME:$JAVA_HOME/bin
 ADD ./resource/${HADOOP_TAR_FILE} .
 
 ENV HADOOP_HOME=/opt/${HADOOP_VERSION}
+ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop
 ENV PATH=$PATH:$HADOOP_HOME:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 RUN ln -s /opt/$HADOOP_VERSION/etc/hadoop /etc/hadoop

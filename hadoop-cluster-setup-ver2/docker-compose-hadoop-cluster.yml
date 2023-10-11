@@ -5,9 +5,7 @@ services:
     build: ./container/namenode
     container_name: namenode
     volumes:
-      - hadoop_namenode:/hadoop/dfs/name
-      - ./data/:/hadoop-data/input
-      - ./map_reduce/:/hadoop-data/map_reduce
+      - ~/local-docker-volume/hadoop_cluster/hadoop_namenode:/hadoop/dfs/name
     environment:
       - CLUSTER_NAME=test
     ports:
@@ -37,6 +35,7 @@ services:
       - namenode
       - datanode1
       - datanode2
+      - datanode3
     ports:
       - "8042:8042"
     networks:
@@ -48,7 +47,7 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode1:/hadoop/dfs/data
+      - ~/local-docker-volume/hadoop_cluster/hadoop_datanode1:/hadoop/dfs/data
     networks:
       - hadoop_cluster_network
 
@@ -58,7 +57,7 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode2:/hadoop/dfs/data
+      - ~/local-docker-volume/hadoop_cluster/hadoop_datanode2:/hadoop/dfs/data
     networks:
       - hadoop_cluster_network
 
@@ -68,7 +67,7 @@ services:
     depends_on:
       - namenode
     volumes:
-      - hadoop_datanode3:/hadoop/dfs/data
+      - ~/local-docker-volume/hadoop_cluster/hadoop_datanode3:/hadoop/dfs/data
     networks:
       - hadoop_cluster_network
 
