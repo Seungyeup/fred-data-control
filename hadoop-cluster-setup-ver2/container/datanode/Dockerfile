@@ -11,6 +11,10 @@ VOLUME /hadoop/dfs/data
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
-EXPOSE 9864
+# 9864 : dfs.datanode.http.address
+# 8042 : yarn nodemanager webapp address
+# 9866 : dfs.datanode.address
+#        the address at which the DataNode in the Hadoop cluster will listen for incoming data transfer requests.
+EXPOSE 9864 8042 9866
 
 CMD ["/run.sh"]

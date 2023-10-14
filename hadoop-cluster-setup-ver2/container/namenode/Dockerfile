@@ -11,6 +11,7 @@ VOLUME /hadoop/dfs/name
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
-EXPOSE 9870
+# 9000 : IPC port (namenode <> datanode 통신을 위한 포트)
+EXPOSE 9870 9867
 
 CMD ["/run.sh"]
