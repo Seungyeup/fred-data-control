@@ -10,4 +10,4 @@
 # if yes run this code to kick-off datanode
 # $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR datanode
 
-hdfs datanode
+$HADOOP_HOME/bin/hdfs datanode

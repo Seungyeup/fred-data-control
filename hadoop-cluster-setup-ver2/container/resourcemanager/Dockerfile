@@ -7,6 +7,10 @@ HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
-EXPOSE 8088
+# 8088 : yarn.resourcemanager.webapp.address
+# 8032 : yarn.resourcemanager.address
+# 8030 : yarn.resourcemanager.scheduler.address
+# 8031 : yarn.resourcemanager.resource-tracker.address
+EXPOSE 8088 8032 8030 8031
 
 CMD ["/run.sh"]

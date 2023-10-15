@@ -68,6 +68,7 @@
                 <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
                 <value>true</value>
         </property>
+        -->
 
         <property>
                 <name>yarn.resourcemanager.hostname</name>
@@ -89,6 +90,7 @@
                 <value>resourcemanager:8031</value>
         </property>
 
+        <!--
         <property>
                 <name>yarn.timeline-service.enabled</name>
                 <value>true</value>
