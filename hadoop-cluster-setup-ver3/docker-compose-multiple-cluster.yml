@@ -14,6 +14,8 @@ services:
       - CLUSTER_NAME=test
     env_file:
       - ./hadoop.env
+    networks:
+      - hadoop_network
 
   datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -27,7 +29,8 @@ services:
       - ./hadoop.env
     depends_on:
       - namenode
-
+    networks:
+      - hadoop_network
 
   datanode2:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -41,6 +44,8 @@ services:
       - ./hadoop.env
     depends_on:
       - namenode
+    networks:
+      - hadoop_network
 
   datanode3:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
@@ -54,8 +59,9 @@ services:
       - ./hadoop.env
     depends_on:
       - namenode
+    networks:
+      - hadoop_network
 
-  
   resourcemanager:
     image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
     container_name: resourcemanager
@@ -71,6 +77,8 @@ services:
       - datanode1
       - datanode2
       - datanode3
+    networks:
+      - hadoop_network
 
   nodemanager1:
     image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
@@ -87,6 +95,8 @@ services:
       - datanode1
       - datanode2
       - datanode3
+    networks:
+      - hadoop_network
 
   historyserver:
     image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
@@ -105,10 +115,16 @@ services:
       - datanode1
       - datanode2
       - datanode3
-  
+    networks:
+      - hadoop_network
+
 volumes:
   hadoop_namenode:
   hadoop_datanode1:
   hadoop_datanode2:
   hadoop_datanode3:
   hadoop_historyserver:
+
+networks:
+  hadoop_network:
+    name: hadoop_network

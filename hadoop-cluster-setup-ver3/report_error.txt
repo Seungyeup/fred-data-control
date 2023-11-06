@@ -1,0 +1,86 @@
+put: File /test/text.txt._COPYING_ could only be written to 0 of the 1 minReplication nodes. There are 3 datanode(s) running and 3 node(s) are excluded in this operation.
+➜  hadoop-cluster-setup-ver3 git:(main) ✗ hadoop dfsadmin -report
+WARNING: Use of this script to execute dfsadmin is deprecated.
+WARNING: Attempting to execute replacement "hdfs dfsadmin" instead.
+
+2023-11-06 13:45:13,545 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Configured Capacity: 188013293568 (175.10 GB)
+Present Capacity: 48081764706 (44.78 GB)
+DFS Remaining: 48081690624 (44.78 GB)
+DFS Used: 74082 (72.35 KB)
+DFS Used%: 0.00%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups:
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (3):
+
+Name: 192.168.96.3:9866 (192.168.96.3)
+Hostname: ac931dda3bac
+Decommission Status : Normal
+Configured Capacity: 62671097856 (58.37 GB)
+DFS Used: 24694 (24.12 KB)
+Non DFS Used: 43427127178 (40.44 GB)
+DFS Remaining: 16027230208 (14.93 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 25.57%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 1
+Last contact: Mon Nov 06 13:45:13 KST 2023
+Last Block Report: Mon Nov 06 13:37:25 KST 2023
+Num of Blocks: 5
+
+
+Name: 192.168.96.4:9866 (192.168.96.4)
+Hostname: 43cc8cea04cf
+Decommission Status : Normal
+Configured Capacity: 62671097856 (58.37 GB)
+DFS Used: 24694 (24.12 KB)
+Non DFS Used: 43427127178 (40.44 GB)
+DFS Remaining: 16027230208 (14.93 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 25.57%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 1
+Last contact: Mon Nov 06 13:45:13 KST 2023
+Last Block Report: Mon Nov 06 13:37:26 KST 2023
+Num of Blocks: 5
+
+
+Name: 192.168.96.5:9866 (192.168.96.5)
+Hostname: 515c90887775
+Decommission Status : Normal
+Configured Capacity: 62671097856 (58.37 GB)
+DFS Used: 24694 (24.12 KB)
+Non DFS Used: 43427127178 (40.44 GB)
+DFS Remaining: 16027230208 (14.93 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 25.57%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 1
+Last contact: Mon Nov 06 13:45:13 KST 2023
+Last Block Report: Mon Nov 06 13:37:26 KST 2023
+Num of Blocks: 5
