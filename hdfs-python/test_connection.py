@@ -9,6 +9,8 @@ import json
 with open('config.json') as f:
     config = json.load(f)
 
+# print(config)
+
 hdfs = pa_fs.HadoopFileSystem(config.get('remote_hadoop_master_node_url'),
                               port=config.get('remote_hadoop_master_node_port'))
 
