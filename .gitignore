@@ -121,3 +121,6 @@ fabric.properties
 hadoop-cluster-setup/resource/*
 hadoop-cluster-setup-ver1/resource/*
 hadoop-cluster-setup-ver2/resource/*
+
+
+hdfs-python/config.json
